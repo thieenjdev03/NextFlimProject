@@ -70,9 +70,9 @@ export default function AddAdmin(props) {
               <label htmlFor="Form_UserName">UserName</label>
               <input
                 type="text"
-                id="Form_UserName"
+                id="Form_UserNameAdmin"
                 name="adminName"
-                className="Form_UserName"
+                className="Form_UserNameAdmin"
                 onChange={handleChange}
                 value={formData.userName}
               />
@@ -81,9 +81,9 @@ export default function AddAdmin(props) {
               <label htmlFor="Form_Password">Password</label>
               <input
                 type="password"
-                id="Form_Password"
+                id="Form_PasswordAdmin"
                 name="password"
-                className="Form_Password"
+                className="Form_PasswordAdmin"
                 onChange={handleChange}
                 value={formData.password}
               />

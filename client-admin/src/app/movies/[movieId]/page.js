@@ -22,7 +22,7 @@ export default function DynamicPage({ params }) {
       }
     };
     fetchData();
-  }, []); // Added token as a dependency
+  }, []); 
 
   return (
     <div>

@@ -9,7 +9,6 @@ const ApiLink = "http://localhost:8000/api/authadmin/login";
 const Login = () => {
   const [adminName, setAdminName] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [data, setData] = React.useState([]);
 
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(data));
@@ -59,7 +58,10 @@ const Login = () => {
           />
         </div>
         <div className="LoginForm px-5">
-          <div className="text-xl font-bold mb-4">Đăng Nhập</div>
+          <div className="text-xl font-bold mb-2">Đăng Nhập</div>
+          <p className="block text-red-500 font-bold mb-2">
+            UserName: Admin1, Password: 123
+          </p>
           <div className="mb-4 w-full">
             <label className="block dark:text-white">UserName</label>
             <input

@@ -1,7 +1,7 @@
 "use client";
 import "@/styles/app.css";
 import "@/styles/Category.css";
-import { use, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import AddCountry from "./AddCountry";
@@ -9,35 +9,11 @@ import DeleteButtonNormal from "@/app/components/Button/DeleteButtonNormal";
 import "@/styles/Account.css";
 import SideBar from "@/app/components/SideBar/SideBar";
 import Header from "@/app/components/header/header";
+import { AppContext } from "@/Context/AppContext";
 
 export default function CountryList(props) {
   const ApiLink = "http://localhost:8000/api/country/getall";
-  const [countryList, setCountryList] = useState([]);
-  const [token, setToken] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = JSON.parse(localStorage.getItem("data"));
-        if (!data) {
-          router.push("/login");
-          return;
-        }
-        const { accessToken } = data;
-        setToken(accessToken);
-
-        const response = await axios.get(ApiLink, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        setCountryList(response.data.countries);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-  }, []); // Empty dependency array means this effect will only run once after the initial render
-
+  const { countryList, token } = useContext(AppContext);
   const [showAddCategory, setShowCategory] = useState(false);
   const handleShowCate = () => {
     setShowCategory(true);

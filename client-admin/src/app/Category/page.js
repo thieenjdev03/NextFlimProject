@@ -19,7 +19,6 @@ export default function CategoryList(props) {
     setStatus(event.target.value);
     alert("Thay Đổi Thành Công");
   };
-  console.table(categoryList);
   useEffect(() => {
     if (idSelected) {
       axios

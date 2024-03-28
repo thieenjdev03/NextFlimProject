@@ -8,7 +8,7 @@ export default () => {
   const [showUserItems, setShowUserItems] = useState(false);
   const [showMovieItems, setShowMovieItems] = useState(false);
   const [showCategoryItems, setShowCategoryItems] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [selectedComponent, setSelectedComponent] = useState('dashboard');
   const router = useRouter();
 
   const handleChangeState = (state) => {

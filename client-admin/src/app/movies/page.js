@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Swal from "sweetalert2";
@@ -7,16 +7,15 @@ import SideBar from "@/app/components/SideBar/SideBar";
 import Header from "@/app/components/header/header";
 import DeleteButtonDefault from "@/app/components/Button/DeleteButtonDefault";
 import EditButton from "@/app/components/Button/EditButton";
+import { AppContext } from "@/Context/AppContext";
 import "@/styles/app.css";
 import "@/styles/Movie.css";
 import EditMoviePopUp from "../components/EditMoviePopUp.js";
-import { Suspense } from "react";
-export default function page() {
-  const [token, setToken] = useState("");
-  const [movieList, setMovieList] = useState([]);
-  const [isOpened, setIsOpened] = useState(false);
 
-  const ApiLink = "http://localhost:8000/api/film/getall";
+export default function page() {
+  const [isOpened, setIsOpened] = useState(false);
+  const { movieList, token } = useContext(AppContext);
+
   const handleDeleteMovie = (id) => {
     axios
       .delete(`http://localhost:8000/api/film/delete/${id}`, {
@@ -37,29 +36,13 @@ export default function page() {
         console.error(error);
       });
   };
-
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
-
   const handleAddPopup = () => {
     setIsEditPopupOpen(true);
   };
-
   const handleEditCancel = () => {
     setIsEditPopupOpen(false);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(ApiLink, {});
-        setMovieList(res.data.films);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [movieList]); // Empty dependency array to run only once after initial render
 
   return (
     <div className="bg-color">
@@ -67,7 +50,7 @@ export default function page() {
         <Header></Header>
         <div className="flex">
           <SideBar></SideBar>
-          <div className="wrapper flex flex-col gap-10">
+          <div className="wrapper flex flex-col">
             {isEditPopupOpen && <EditMoviePopUp />}
             <div className="MovieListTitle primary-title w-full flex justify-center items-center">
               Danh Sách Phim
@@ -86,7 +69,7 @@ export default function page() {
                   <li
                     key={item._id}
                     scroll={false}
-                    className="MovieItem w-1/4 hover:border-black hover:border-2 p-2 style list-none rounded-lg flex flex-col items-center h-"
+                    className="MovieItem w-1/5 hover:border-black hover:border-2 p-2 style list-none rounded-lg flex flex-col items-center h-"
                   >
                     <Link
                       href="movies/[slug]"
@@ -108,15 +91,14 @@ export default function page() {
                         <img
                           src={item.poster}
                           alt=""
-                          className="MoviePoster w-full h-3/4"
+                          className="MoviePoster w-full min-h-3/4 "
                         />
                         <div className="MovieCategory flex items-center justify-center bg-red-500 p-1 px-1 rounded-md w-8 absolute right-3 top-3 label-form">
                           {item.age} <span>+</span>
                         </div>
                       </div>
-
                       <div className="TextSection flex flex-col justify-center items-center">
-                        <div className="MovieName flex text-center primary-title">
+                        <div className="MovieName flex text-center primary-title h-20">
                           {item.filmName}
                         </div>
                         <div className="MovieCategory">
@@ -128,7 +110,6 @@ export default function page() {
                         <div className="MovieCategory">
                           Năm Phát Hành: {item.yearPublish}
                         </div>
-
                         <div className="MovieCategory">Tags: {item.tags}</div>
                       </div>
                     </Link>

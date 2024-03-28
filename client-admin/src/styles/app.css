@@ -11,6 +11,10 @@
   flex: 1;
   box-sizing: border-box;
   overflow-y: auto;
+  min-height: 100vh
+}
+.color-red{
+  color:rgb(219, 100, 100)!important;
 }
 .confirm-button {
   display: inline-block;

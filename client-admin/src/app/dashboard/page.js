@@ -2,60 +2,35 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import "@/styles/dashboard.css";
-import { BiSolidCategoryAlt } from "react-icons/bi";
-import { IoIosArrowDown } from "react-icons/io";
-import DarkMode from "../components/Button/Darkmode";
 import Header from "@/app/components/header/header";
 import SideBar from "@/app/components/SideBar/SideBar";
 import { useRouter } from "next/navigation";
-
+import "@/styles/app.css";
+import "@/styles/Movie.css";
 export default function Dashboard() {
-  const [selectedComponent, setSelectedComponent] = useState(null);
   const [role, setRole] = useState("");
   const router = useRouter();
 
-  const handleChangeState = (state) => {
-    setSelectedComponent(state);
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedData = localStorage.getItem("data");
-      if (storedData === null) {
-        router.push("/login");
-      } else {
-        const data = JSON.parse(storedData);
-        const adminObject = data.admin;
-        {
-          adminObject == null ? null : adminObject;
-        }
-        setRole(adminObject);
-      }
+  const data = JSON.parse(localStorage.getItem("data"));
+  useEffect(()=>{
+    if(data !== null){
+      router.push("/dashboard");
     }
-  }, []); // Empty dependency array to run the effect only once
-
-  let dataObject = null;
-  let token = "";
-
-  if (typeof window !== "undefined") {
-    const data = localStorage.getItem("data");
-
-    try {
-      if (data) {
-        dataObject = JSON.parse(data);
-        token = dataObject.accessToken;
-      }
-    } catch (error) {
-      console.error("Error parsing data:", error);
+    else{
+      router.push("/login");
     }
-  }
+  })
   return (
     <div className="flex flex-col bg-color">
       <Header />
       <div id="Container  " className="flex">
         <SideBar />
         <div className="Content">
-          <div className="w-full"></div>
+          <div className="w-full">
+            <div className="wrapper">
+              Chào mừng bạn trở lại trang quản lý của Admin
+            </div>
+          </div>
         </div>
       </div>
     </div>

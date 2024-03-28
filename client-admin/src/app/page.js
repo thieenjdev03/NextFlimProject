@@ -8,19 +8,15 @@ import { useState } from "react";
 export default function Home() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const data = JSON.parse(localStorage.getItem("data"));
 
   useEffect(() => {
-    const localStorageData = localStorage.getItem("data");
-    if (
-      localStorageData === null ||
-      localStorageData === "" ||
-      localStorageData === undefined
-    ) {
-      setIsLoggedIn(false);
-    } else {
+    if (data !== null) {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (isLoggedIn === false) {
@@ -28,7 +24,7 @@ export default function Home() {
     } else {
       router.push("/login");
     }
-  }, [isLoggedIn, router]);
+  }, [isLoggedIn]);
 
   return <div></div>;
 }

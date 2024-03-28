@@ -12,55 +12,10 @@ import EditAccount from "./EditAccount";
 import "@/styles/Account.css";
 import { AppContext } from "@/Context/AppContext";
 export default function AccountList() {
-  // const router = useRouter();
-  const [role, setRole] = useState("Admin");
-  const [roleUser, setRoleUser] = useState("admin");
   const [isOpened, setIsOpened] = useState(false);
   const [isEditOpened, setIsEditOpened] = useState(false);
   const [userIdSelected, setUserIdSelected] = useState("");
-  // const [adminList, setAdminList] = useState([]);
-  // const [userList, setUserList] = useState([]);
-  const [lengthUser, setLengthUser] = useState(0);
-  // const [token, setToken] = useState("");
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = JSON.parse(localStorage.getItem("data"));
-  //       if (!data) {
-  //         router.push("/login");
-  //         return;
-  //       }
-  //       const {
-  //         accessToken,
-  //         admin: { role: roleUser },
-  //       } = data;
-  //       setToken(accessToken);
-  //       const headers = { Authorization: `Bearer ${accessToken}` };
-  //       const response1 = await axios.get(
-  //         "http://localhost:8000/api/admin/getall",
-  //         { headers }
-  //       );
-  //       const response2 = await axios.get(
-  //         "http://localhost:8000/api/user/getall",
-  //         { headers }
-  //       );
-
-  //       setAdminList(response1.data.admins);
-  //       setUserList(response2.data.users);
-  //       setRoleUser(roleUser);
-  //       setLengthUser(
-  //         role === "Admin" && roleUser === "superAdmin"
-  //           ? adminList.length
-  //           : userList.length
-  //       );
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [role, roleUser, adminList, userList]);
-  const { adminList, userList, token } = useContext(AppContext);
+  const { adminList, userList, token, lengthUser, role, roleUser } = useContext(AppContext);
   const handleChangeRole = (props) => {
     setRole(props);
   };

@@ -7,7 +7,7 @@ export const AppProvider = ({ children }) => {
   const ApiLink = "http://localhost:8000/api/category/getall";
   const [categoryList, setCategoryList] = useState([]);
   const [token, setToken] = useState("");
-
+  const [lengthUser,setLengthUser] = useState(0)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,6 +35,7 @@ export const AppProvider = ({ children }) => {
   const [roleUser, setRoleUser] = useState("admin");
   const [adminList, setAdminList] = useState([]);
   const [userList, setUserList] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -72,7 +73,7 @@ export const AppProvider = ({ children }) => {
     };
 
     fetchData();
-  }, [role, roleUser, adminList, userList]);
+  }, []);
   const [countryList, setCountryList] = useState([]);
   const ApiLinkCountry = "http://localhost:8000/api/country/getall";
 
@@ -91,6 +92,22 @@ export const AppProvider = ({ children }) => {
     };
     fetchData();
   }, []);
+
+  const [movieList, setMovieList] = useState([]);
+  const ApiLinkFilm = "http://localhost:8000/api/film/getall";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(ApiLinkFilm, {});
+        setMovieList(res.data.films);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -100,6 +117,10 @@ export const AppProvider = ({ children }) => {
         adminList,
         userList,
         countryList,
+        movieList,
+        lengthUser,
+        roleUser,
+        role
       }}
     >
       {children}
