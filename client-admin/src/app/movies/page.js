@@ -52,14 +52,14 @@ export default function page() {
           <SideBar></SideBar>
           <div className="wrapper flex flex-col">
             {isEditPopupOpen && <EditMoviePopUp />}
-            <div className="MovieListTitle primary-title w-full flex justify-center items-center">
+            <div className="MovieListTitle primary-title w-full flex justify-center items-center text-2xl">
               Danh Sách Phim
             </div>
             <button
               onClick={() => {
                 window.location.href = "NewFilm";
               }}
-              className="btn w-30 h-10 text-black border-black border-2 w-32"
+              className="btn w-30 h-10 text-black border-black border-2 w-32 absolute right-10 bg-black text-white"
             >
               Phim Mới
             </button>

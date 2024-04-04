@@ -15,7 +15,7 @@ const tvSeriesRoute = require("./Routes/tvSeriesRoute");
 
 dotenv.config();
 //mongoDB connection
-connectDB();
+connectDB();1
 
 const app = Express();
 app.use(cors());

@@ -19,7 +19,6 @@ const usersSchema = new Schema(
     },
     avatar: {
       type: String,
-      required: false,
     },
     phoneNumber: {
       type: String,
@@ -29,51 +28,41 @@ const usersSchema = new Schema(
     packID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "pack",
-      required: false,
     },
     activationDateVip: {
       type: Date,
-      required: false,
     },
     endDateVip: {
       type: Date,
-      required: false,
     },
     watchHistory: {
       type: Array,
-      required: false,
     },
     role1: {
       name: {
         type: String,
-        required: false,
         default: "role 1",
       },
       pin: {
         type: String,
-        required: false,
         default: "1234",
       },
     },
     role2: {
       name: {
         type: String,
-        required: false,
         default: "role 2",
       },
       pin: {
         type: String,
-        required: false,
         default: "1234",
       },
     },
     resetPasswordCode: {
       type: String,
-      required: false,
     },
     resetPasswordExpires: {
       type: Date,
-      required: false,
     },
     knownDevices: [
       {

@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Mailer = require("../middlewares/mailer");
 const useragent = require("useragent");
-const geoip = require("geoip-lite");
+// const geoip = require("geoip-lite");
 
 class authUsersService {
   static async loginUserService(email, password, req) {
@@ -19,19 +19,19 @@ class authUsersService {
         message: "Email or password is incorrect",
       };
     }
-    // Get device info
-    const userAgentString = req.headers["user-agent"];
-    const agent = useragent.parse(userAgentString);
-    const ip = req.ip;
-    const geo = geoip.lookup(ip);
-    const deviceInfo = {
-      browser: agent.toAgent(),
-      os: agent.os.toString(),
-      device: agent.device.toString(),
-      ip: ip,
-      location: geo ? `${geo.city}, ${geo.region}, ${geo.country}` : "Unknown",
-      deviceId: `${agent.toAgent()}-${agent.os.toString()}-${ip}`, // Create a unique deviceId
-    };
+    // // Get device info
+    // const userAgentString = req.headers["user-agent"];
+    // const agent = useragent.parse(userAgentString);
+    // const ip = req.ip;
+    // const geo = geoip.lookup(ip);
+    // const deviceInfo = {
+    //   browser: agent.toAgent(),
+    //   os: agent.os.toString(),
+    //   device: agent.device.toString(),
+    //   ip: ip,
+    //   location: geo ? `${geo.city}, ${geo.region}, ${geo.country}` : "Unknown",
+    //   deviceId: `${agent.toAgent()}-${agent.os.toString()}-${ip}`, // Create a unique deviceId
+    // };
 
     // Check if the device is recognized
     const knownDevice = userFound.knownDevices.find(

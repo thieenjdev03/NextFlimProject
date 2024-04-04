@@ -252,3 +252,7 @@
   line-height: 20px;
   color: #fff;
 }
+
+tr > td {
+  color: black;
+}

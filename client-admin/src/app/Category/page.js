@@ -76,7 +76,7 @@ export default function CategoryList(props) {
                   <thead>
                     <tr>
                       <th>STT</th>
-                      <th>AdminName</th>
+                      <th>Tên Danh Mục</th>
                       <th>Mô Tả</th>
                       <th>Trạng Thái</th>
                       <th>Hành Động</th>

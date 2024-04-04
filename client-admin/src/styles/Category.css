@@ -1,49 +1,55 @@
-.CategoryListSection{
-    display: flex;
-min-width: 100%;
-padding: 30px;
-flex-direction: column;
-align-items: flex-start;
-gap: 20px;
+.CategoryListSection {
+  display: flex;
+  min-width: 100%;
+  padding: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
-.CategoryListSection_title{
-    color: var(--neutral-800, #262626);
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+.CategoryListSection_title {
+  color: var(--neutral-800, #262626);
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 /* Style the CategoryListSection */
 .CategoryListSection {
-    margin: 0 auto;
-  }
-  
-  /* Style the CategoryListSection_title */
-  .CategoryListSection_title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  /* Style the select container */
-  .CategoryList_Items {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  
-  /* Style the select options */
-  .CategoryList_Items option {
-    background-color: #fff;
-    padding: 10px;
-    color: #333;
-  }
-  
-  /* Style the selected option */
-  .CategoryList_Items option:checked {
-    background-color: #e0e0e0;
-    font-weight: bold;
-  }
+  margin: 0 auto;
+}
+
+/* Style the CategoryListSection_title */
+.CategoryListSection_title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Style the select container */
+.CategoryList_Items {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Style the select options */
+.CategoryList_Items option {
+  background-color: #fff;
+  padding: 10px;
+  color: #333;
+}
+
+/* Style the selected option */
+.CategoryList_Items option:checked {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.AccountList_Table th {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
