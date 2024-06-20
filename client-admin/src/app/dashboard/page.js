@@ -11,15 +11,6 @@ export default function Dashboard() {
   const [role, setRole] = useState("");
   const router = useRouter();
 
-  const data = JSON.parse(localStorage.getItem("data"));
-  useEffect(()=>{
-    if(data !== null){
-      router.push("/dashboard");
-    }
-    else{
-      router.push("/login");
-    }
-  })
   return (
     <div className="flex flex-col bg-color">
       <Header />

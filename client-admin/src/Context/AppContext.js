@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, use } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 export const AppContext = createContext({});
@@ -7,7 +7,14 @@ export const AppProvider = ({ children }) => {
   const ApiLink = "http://localhost:8000/api/category/getall";
   const [categoryList, setCategoryList] = useState([]);
   const [token, setToken] = useState("");
-  const [lengthUser,setLengthUser] = useState(0)
+  const [lengthUser, setLengthUser] = useState(0);
+  const [data, setData] = useState({});
+  useEffect(() => {
+    if (localStorage.getItem("data")) {
+      setData(JSON.parse(localStorage.getItem("data")));
+    }
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -120,7 +127,8 @@ export const AppProvider = ({ children }) => {
         movieList,
         lengthUser,
         roleUser,
-        role
+        role,
+        data,
       }}
     >
       {children}
